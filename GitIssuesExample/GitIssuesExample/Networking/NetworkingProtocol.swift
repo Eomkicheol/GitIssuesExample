@@ -15,7 +15,7 @@ import ObjectMapper
 
 var defaultErrorMessage: String = "잠시 후 다시 접속해주세요."
 
-protocol NetworkingProtocol {
+public protocol NetworkingProtocol {
 	func request(_ target: TargetType, file: StaticString, function: StaticString, line: UInt) -> Single<Moya.Response>
 }
 
@@ -25,32 +25,11 @@ extension NetworkingProtocol {
 	}
 }
 
-final class Networking: MoyaProvider<MultiTarget>, NetworkingProtocol {
+public final class Networking: MoyaProvider<MultiTarget>, NetworkingProtocol {
 	
 	var disposeBag: DisposeBag = DisposeBag()
-	let intercepter: ConnectChecker
 	
-	init(logger: [PluginType]) {
-		let intercepter = ConnectChecker()
-		self.intercepter = intercepter
-		let session = MoyaProvider<MultiTarget>.defaultAlamofireSession()
-		session.sessionConfiguration.timeoutIntervalForRequest = 10
-		super.init(requestClosure: { endpoint, completion in
-			do {
-				let urlRequest = try endpoint.urlRequest()
-				intercepter.adapt(urlRequest, for: session, completion: completion)
-			} catch MoyaError.requestMapping(let url) {
-				completion(.failure(MoyaError.requestMapping(url)))
-			} catch MoyaError.parameterEncoding(let error) {
-				completion(.failure(MoyaError.parameterEncoding(error)))
-			} catch {
-				completion(.failure(MoyaError.underlying(error, nil)))
-			}
-		}, session: session, plugins: logger)
-	}
-	
-	
-	func request(_ target: TargetType, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> Single<Moya.Response> {
+	public func request(_ target: TargetType, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> Single<Moya.Response> {
 		let requestString = "\(target.method.rawValue) \(target.path)"
 		
 		return self.rx.request(.target(target))
@@ -83,42 +62,7 @@ final class Networking: MoyaProvider<MultiTarget>, NetworkingProtocol {
 				return .error(NSError(domain: error.localizedDescription, code: 0, userInfo: [:]))
 			}
 	}
-	
-	class ConnectChecker {
-		
-		init() { }
-		
-		func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, MoyaError>) -> Void) {
-			
-			var zeroAddress = sockaddr_in()
-			zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-			zeroAddress.sin_family = sa_family_t(AF_INET)
-			
-			guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
-				$0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
-					SCNetworkReachabilityCreateWithAddress(nil, $0)
-				}
-			}) else {
-				completion(.success(urlRequest))
-				return
-			}
-			
-			var flags: SCNetworkReachabilityFlags = []
-			
-			if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-				completion(.failure(MoyaError.requestMapping(defaultErrorMessage)))
-				return
-			}
-			
-			let isReachable = flags.contains(.reachable)
-			let needsConnection = flags.contains(.connectionRequired)
-			
-			if isReachable && !needsConnection {
-				completion(.success(urlRequest))
-			} else {
-				completion(.failure(MoyaError.requestMapping(defaultErrorMessage)))
-				return
-			}
-		}
-	}
 }
+
+
+public let defaultNetwork = Networking()

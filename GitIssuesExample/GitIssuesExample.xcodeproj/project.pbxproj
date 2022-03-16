@@ -12,6 +12,21 @@
 		5FCCF0F727E17714003F8C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCCF0F527E17714003F8C15 /* LaunchScreen.storyboard */; };
 		5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */; };
 		5FCCF10827E17BBC003F8C15 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */; };
+		5FD4559027E1817700E19829 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4558F27E1817700E19829 /* HomeRouter.swift */; };
+		5FD4559527E182A100E19829 /* HomeViewEffector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559127E182A100E19829 /* HomeViewEffector.swift */; };
+		5FD4559727E182A100E19829 /* HomeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559327E182A100E19829 /* HomeViewViewController.swift */; };
+		5FD4559827E182A100E19829 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559427E182A100E19829 /* HomeViewReactor.swift */; };
+		5FD4559A27E182FA00E19829 /* HomeRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559927E182FA00E19829 /* HomeRepositories.swift */; };
+		5FD4559C27E1845C00E19829 /* HomeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559B27E1845C00E19829 /* HomeApi.swift */; };
+		5FD4559E27E184E300E19829 /* DebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559D27E184E300E19829 /* DebugLog.swift */; };
+		5FD455A127E1852300E19829 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455A027E1852300E19829 /* BaseViewController.swift */; };
+		5FD455AE27E1954C00E19829 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455AC27E1954C00E19829 /* TitleCollectionViewCell.swift */; };
+		5FD455AF27E1954C00E19829 /* TitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455AD27E1954C00E19829 /* TitleCellReactor.swift */; };
+		5FD455B227E1955500E19829 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B027E1955500E19829 /* ImageCollectionViewCell.swift */; };
+		5FD455B327E1955500E19829 /* ImageCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B127E1955500E19829 /* ImageCellReactor.swift */; };
+		5FD455B527E1959F00E19829 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B427E1959F00E19829 /* RepoSection.swift */; };
+		5FD455B727E196D300E19829 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B627E196D300E19829 /* BaseCollectionViewCell.swift */; };
+		5FD455BC27E19AE300E19829 /* RepoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455BB27E19AE300E19829 /* RepoEntities.swift */; };
 		CCFF469C7A08E13212403752 /* Pods_GitIssuesExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41193EA75B2E2B055DF24CDD /* Pods_GitIssuesExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +40,21 @@
 		5FCCF0F827E17714003F8C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		5FD4558F27E1817700E19829 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		5FD4559127E182A100E19829 /* HomeViewEffector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewEffector.swift; sourceTree = "<group>"; };
+		5FD4559327E182A100E19829 /* HomeViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewController.swift; sourceTree = "<group>"; };
+		5FD4559427E182A100E19829 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
+		5FD4559927E182FA00E19829 /* HomeRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositories.swift; sourceTree = "<group>"; };
+		5FD4559B27E1845C00E19829 /* HomeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApi.swift; sourceTree = "<group>"; };
+		5FD4559D27E184E300E19829 /* DebugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLog.swift; sourceTree = "<group>"; };
+		5FD455A027E1852300E19829 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		5FD455AC27E1954C00E19829 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FD455AD27E1954C00E19829 /* TitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCellReactor.swift; sourceTree = "<group>"; };
+		5FD455B027E1955500E19829 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FD455B127E1955500E19829 /* ImageCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellReactor.swift; sourceTree = "<group>"; };
+		5FD455B427E1959F00E19829 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
+		5FD455B627E196D300E19829 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FD455BB27E19AE300E19829 /* RepoEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoEntities.swift; sourceTree = "<group>"; };
 		AD7F02D2E5EC4B63F0107547 /* Pods-GitIssuesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitIssuesExample.release.xcconfig"; path = "Target Support Files/Pods-GitIssuesExample/Pods-GitIssuesExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +124,8 @@
 		5FCCF0FF27E179B4003F8C15 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				5FD4559F27E1850A00E19829 /* Base */,
+				5FD455A427E191D000E19829 /* Home */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -103,6 +135,7 @@
 			children = (
 				5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */,
 				5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */,
+				5FD4559D27E184E300E19829 /* DebugLog.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -110,6 +143,7 @@
 		5FCCF10127E179E5003F8C15 /* Apis */ = {
 			isa = PBXGroup;
 			children = (
+				5FD4559B27E1845C00E19829 /* HomeApi.swift */,
 			);
 			path = Apis;
 			sourceTree = "<group>";
@@ -117,6 +151,7 @@
 		5FCCF10227E17A2F003F8C15 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				5FD4559927E182FA00E19829 /* HomeRepositories.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -124,6 +159,7 @@
 		5FCCF10327E17A38003F8C15 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				5FD4558F27E1817700E19829 /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -131,8 +167,41 @@
 		5FCCF10427E17A43003F8C15 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				5FD455BB27E19AE300E19829 /* RepoEntities.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		5FD4559F27E1850A00E19829 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5FD455A027E1852300E19829 /* BaseViewController.swift */,
+				5FD455B627E196D300E19829 /* BaseCollectionViewCell.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		5FD455A427E191D000E19829 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5FD455AB27E1953900E19829 /* Cells */,
+				5FD4559127E182A100E19829 /* HomeViewEffector.swift */,
+				5FD4559327E182A100E19829 /* HomeViewViewController.swift */,
+				5FD4559427E182A100E19829 /* HomeViewReactor.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		5FD455AB27E1953900E19829 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FD455AC27E1954C00E19829 /* TitleCollectionViewCell.swift */,
+				5FD455AD27E1954C00E19829 /* TitleCellReactor.swift */,
+				5FD455B027E1955500E19829 /* ImageCollectionViewCell.swift */,
+				5FD455B127E1955500E19829 /* ImageCellReactor.swift */,
+				5FD455B427E1959F00E19829 /* RepoSection.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F174D19243FDFA4CD6A6B104 /* Pods */ = {
@@ -258,9 +327,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD455B227E1955500E19829 /* ImageCollectionViewCell.swift in Sources */,
+				5FD4559E27E184E300E19829 /* DebugLog.swift in Sources */,
 				5FCCF10827E17BBC003F8C15 /* NetworkLogger.swift in Sources */,
+				5FD455A127E1852300E19829 /* BaseViewController.swift in Sources */,
+				5FD455AF27E1954C00E19829 /* TitleCellReactor.swift in Sources */,
+				5FD455B727E196D300E19829 /* BaseCollectionViewCell.swift in Sources */,
+				5FD4559027E1817700E19829 /* HomeRouter.swift in Sources */,
+				5FD4559C27E1845C00E19829 /* HomeApi.swift in Sources */,
+				5FD455B527E1959F00E19829 /* RepoSection.swift in Sources */,
+				5FD455BC27E19AE300E19829 /* RepoEntities.swift in Sources */,
+				5FD4559A27E182FA00E19829 /* HomeRepositories.swift in Sources */,
+				5FD4559727E182A100E19829 /* HomeViewViewController.swift in Sources */,
 				5FCCF0EB27E17713003F8C15 /* AppDelegate.swift in Sources */,
+				5FD4559827E182A100E19829 /* HomeViewReactor.swift in Sources */,
+				5FD4559527E182A100E19829 /* HomeViewEffector.swift in Sources */,
+				5FD455AE27E1954C00E19829 /* TitleCollectionViewCell.swift in Sources */,
 				5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */,
+				5FD455B327E1955500E19829 /* ImageCellReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
