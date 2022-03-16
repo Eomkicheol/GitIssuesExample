@@ -25,7 +25,7 @@ extension HomeApi: TargetType {
 				return "repos/apple/swift/issues"
 				
 			case let .searchRepoData(search):
-				return "repos/apple/\(search)/issues"
+				return "repos/\(search)/issues"
 		}
 	}
 	
