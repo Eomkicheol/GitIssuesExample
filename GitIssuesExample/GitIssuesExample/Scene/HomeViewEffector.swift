@@ -10,6 +10,7 @@ import RxSwift
 
 protocol HomeViewEffectorProtocol: AnyObject {
 	func fetchRepoData() -> Observable<[RepoEntities]>
+	func searchRepoData(searchName: String) -> Observable<[RepoEntities]>
 }
 
 final class HomeViewEffector: HomeViewEffectorProtocol {
@@ -21,5 +22,9 @@ final class HomeViewEffector: HomeViewEffectorProtocol {
 	
 	func fetchRepoData() -> Observable<[RepoEntities]> {
 		return repository.fetchRepoData()
+	}
+	
+	func searchRepoData(searchName: String) -> Observable<[RepoEntities]> {
+		return repository.searchRepoData(searchName: searchName)
 	}
 }

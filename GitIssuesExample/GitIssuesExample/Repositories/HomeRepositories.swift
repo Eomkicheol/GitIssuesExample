@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol HomeRepositoryImpl: AnyObject {
 	func fetchRepoData() -> Observable<[RepoEntities]>
+	func searchRepoData(searchName: String) -> Observable<[RepoEntities]>
 }
 
 final class HomeRepositories: HomeRepositoryImpl {
@@ -32,4 +33,19 @@ final class HomeRepositories: HomeRepositoryImpl {
 				return [RepoEntities]()
 			}
 	}
+	
+	
+	func searchRepoData(searchName: String) -> Observable<[RepoEntities]> {
+		return network.request(HomeApi.searchRepoData(searchName))
+			.asObservable()
+			.mapString()
+			.compactMap { value -> [RepoEntities] in
+				if let jsonModel = [RepoEntities](JSONString: value) {
+					return jsonModel
+				}
+				return [RepoEntities]()
+			}
+	}
+	
+	
 }

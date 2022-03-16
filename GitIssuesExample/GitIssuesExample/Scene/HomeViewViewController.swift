@@ -105,6 +105,7 @@ extension HomeViewViewController {
 		self.bindSection(reactor: reactor)
 		self.bindMoveToWeb(reactor: reactor)
 		self.bindMoveToDetail(reactor: reactor)
+		self.bindErrorMessage(reactor: reactor)
 	}
 }
 
@@ -161,13 +162,49 @@ extension HomeViewViewController {
 			})
 			.disposed(by: self.disposeBag)
 	}
+	
+	private func bindErrorMessage(reactor: Reactor) {
+		reactor.state
+			.compactMap(\.errorMessage)
+			.asDriver(onErrorJustReturn: "")
+			.drive(onNext: { [weak self] message in
+				let alert = UIAlertController(title: "검색", message: message, preferredStyle: .alert)
+				let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+			
+				alert.addAction(ok)
+				
+				self?.present(alert, animated: true, completion: nil)
+			})
+			.disposed(by: self.disposeBag)
+	}
 }
 	
 		// MARK: Func
 	extension HomeViewViewController {
 		@objc
 		private func rightBarButtonTapped(_ sender: UIBarButtonItem) {
-			print("1234")
+			let alert = UIAlertController(title: "검색", message: "Repository 입력해 주세요", preferredStyle: .alert)
+			
+			alert.addTextField { field in
+				field.placeholder  = "Repository 입력해 주세요"
+				
+			}
+			
+			let ok = UIAlertAction(title: "확인", style: .default) { click in
+				let search = alert.textFields?[0].text ?? ""
+				
+				self.reactor?.action.onNext(Reactor.Action.searchRepo(search))
+			}
+			
+			let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+
+			
+			alert.addAction(cancel)
+			
+			alert.addAction(ok)
+			
+			self.present(alert, animated: true, completion: nil)
+			
 		}
 		
 		private func configureNavigationITem() {

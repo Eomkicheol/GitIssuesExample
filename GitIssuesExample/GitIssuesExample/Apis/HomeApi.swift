@@ -9,6 +9,7 @@ import Moya
 
 enum HomeApi {
 	case fetchRepoData
+	case searchRepoData(String)
 }
 
 
@@ -22,12 +23,15 @@ extension HomeApi: TargetType {
 		switch self {
 			case .fetchRepoData:
 				return "repos/apple/swift/issues"
+				
+			case let .searchRepoData(search):
+				return "repos/apple/\(search)/issues"
 		}
 	}
 	
 	var method: Method {
 		switch self {
-			case .fetchRepoData:
+			case .fetchRepoData, .searchRepoData:
 				return .get
 		}
 	}
@@ -39,7 +43,7 @@ extension HomeApi: TargetType {
 	
 	var task: Task {
 		switch self {
-			case .fetchRepoData:
+			case .fetchRepoData, .searchRepoData:
 				return .requestPlain
 		}
 	}
