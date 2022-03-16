@@ -35,18 +35,21 @@ final class HomeViewReactor: Reactor {
 	enum Action {
 		case fetchRepoData
 		case moveToWeb(String)
+		case moveToDetail(DetailDTO)
 	}
 	
 		// MARK: State
 	struct State {
 		var section: [RepoSection] = [.init(identity: .items, items: [])]
 		var moveToWeb: String?
+		var moveToDetail: DetailDTO?
 	}
 	
 		// MARK: Mutation
 	enum Mutation {
 		case setRepoData([RepoEntities])
 		case setMoveToWeb(String?)
+		case setMoveToDetail(DetailDTO?)
 	}
 	
 		// MARK: Mutate
@@ -61,6 +64,12 @@ final class HomeViewReactor: Reactor {
 				return Observable.concat([
 					Observable.just(Mutation.setMoveToWeb(address)),
 					Observable.just(Mutation.setMoveToWeb(nil)),
+				])
+				
+			case let .moveToDetail(dto):
+				return Observable.concat([
+					Observable.just(Mutation.setMoveToDetail(dto)),
+					Observable.just(Mutation.setMoveToDetail(nil)),
 				])
 		}
 	}
@@ -82,6 +91,9 @@ final class HomeViewReactor: Reactor {
 				
 			case .setMoveToWeb(let address):
 				newState.moveToWeb = address
+			
+			case .setMoveToDetail(let dto):
+				newState.moveToDetail = dto
 		}
 		return newState
 	}

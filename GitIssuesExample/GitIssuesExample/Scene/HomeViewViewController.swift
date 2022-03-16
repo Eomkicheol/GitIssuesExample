@@ -104,6 +104,7 @@ extension HomeViewViewController {
 		self.bindDelegate(reactor: reactor)
 		self.bindSection(reactor: reactor)
 		self.bindMoveToWeb(reactor: reactor)
+		self.bindMoveToDetail(reactor: reactor)
 	}
 }
 
@@ -148,6 +149,18 @@ extension HomeViewViewController {
 			})
 			.disposed(by: self.disposeBag)
 	}
+	
+	private func bindMoveToDetail(reactor: Reactor) {
+		reactor.state
+			.compactMap(\.moveToDetail)
+			.asDriver(onErrorJustReturn: .init())
+			.drive(onNext: { [weak self] dto in
+				HomeRouter.detail(dto: dto).viewController.do {
+					self?.navigationController?.pushViewController($0, animated: true)
+				}
+			})
+			.disposed(by: self.disposeBag)
+	}
 }
 	
 		// MARK: Func
@@ -173,11 +186,12 @@ extension HomeViewViewController {
 							let cell = collectionView.dequeue(Reusable.titleCell, for: indexPath)
 							if cell.reactor !== cellReactor {
 								cell.configure(reactor: cellReactor)
-								cell.rx.didTap
+								cell.rx.didTapped
 									.throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-									.asDriver(onErrorJustReturn: "")
-									.drive(onNext: { [weak self] body in
-										print(body)
+									.asDriver(onErrorJustReturn: .init())
+									.drive(onNext: { [weak self] dto in
+										guard let self = self else { return }
+										self.reactor?.action.onNext(Reactor.Action.moveToDetail(dto))
 									})
 									.disposed(by: cell.disposeBag)
 							}

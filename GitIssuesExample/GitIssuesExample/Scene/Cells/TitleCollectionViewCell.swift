@@ -14,15 +14,29 @@ import RxSwift
 import ReactorKit
 import RxOptional
 
+
+struct DetailDTO {
+	var html: String
+	var title: String
+	
+	init() {
+		self.title = ""
+		self.html = ""
+	}
+}
+
 extension Reactive where Base: TitleCollectionViewCell {
 	
-	var didTap: ControlEvent<String> {
+	var didTapped: ControlEvent<DetailDTO> {
 		let source = UITapGestureRecognizer().then {
 			self.base.addGestureRecognizer($0)
 			self.base.isUserInteractionEnabled = true
-		}.rx.event.map { [weak base] _ in
-			return base?.reactor?.currentState.item.body
-		}.filterNil()
+		}.rx.event.map { [weak base] _ -> DetailDTO in
+			var dto = DetailDTO()
+			dto.html = base?.reactor?.currentState.item.body ?? ""
+			dto.title = base?.reactor?.currentState.item.title ?? ""
+			return dto
+		}
 		return ControlEvent(events: source)
 	}
 }

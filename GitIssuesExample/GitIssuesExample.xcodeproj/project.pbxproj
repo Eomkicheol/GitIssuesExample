@@ -27,6 +27,7 @@
 		5FD455B527E1959F00E19829 /* RepoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B427E1959F00E19829 /* RepoSection.swift */; };
 		5FD455B727E196D300E19829 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455B627E196D300E19829 /* BaseCollectionViewCell.swift */; };
 		5FD455BC27E19AE300E19829 /* RepoEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455BB27E19AE300E19829 /* RepoEntities.swift */; };
+		5FD455C427E1BCD300E19829 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD455C027E1BCD300E19829 /* DetailViewController.swift */; };
 		CCFF469C7A08E13212403752 /* Pods_GitIssuesExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41193EA75B2E2B055DF24CDD /* Pods_GitIssuesExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		5FD455B427E1959F00E19829 /* RepoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSection.swift; sourceTree = "<group>"; };
 		5FD455B627E196D300E19829 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		5FD455BB27E19AE300E19829 /* RepoEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoEntities.swift; sourceTree = "<group>"; };
+		5FD455C027E1BCD300E19829 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AD7F02D2E5EC4B63F0107547 /* Pods-GitIssuesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitIssuesExample.release.xcconfig"; path = "Target Support Files/Pods-GitIssuesExample/Pods-GitIssuesExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 		5FCCF0FF27E179B4003F8C15 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				5FD455BD27E1BCC300E19829 /* Detail */,
 				5FD4559F27E1850A00E19829 /* Base */,
 				5FD455A427E191D000E19829 /* Home */,
 			);
@@ -202,6 +205,14 @@
 				5FD455B427E1959F00E19829 /* RepoSection.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5FD455BD27E1BCC300E19829 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5FD455C027E1BCD300E19829 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		F174D19243FDFA4CD6A6B104 /* Pods */ = {
@@ -332,6 +343,7 @@
 				5FCCF10827E17BBC003F8C15 /* NetworkLogger.swift in Sources */,
 				5FD455A127E1852300E19829 /* BaseViewController.swift in Sources */,
 				5FD455AF27E1954C00E19829 /* TitleCellReactor.swift in Sources */,
+				5FD455C427E1BCD300E19829 /* DetailViewController.swift in Sources */,
 				5FD455B727E196D300E19829 /* BaseCollectionViewCell.swift in Sources */,
 				5FD4559027E1817700E19829 /* HomeRouter.swift in Sources */,
 				5FD4559C27E1845C00E19829 /* HomeApi.swift in Sources */,

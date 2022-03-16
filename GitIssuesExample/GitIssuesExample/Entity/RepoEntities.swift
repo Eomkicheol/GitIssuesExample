@@ -12,6 +12,7 @@ struct RepoEntities: Mappable  {
 	var title: String
 	var body: String
 	
+	
 	init() {
 		number = 0
 		title = ""
@@ -27,6 +28,6 @@ struct RepoEntities: Mappable  {
 	mutating func mapping(map: Map) {
 		number <- map["number"]
 		title <- map["title"]
-		body <- map["body"]
+		body <- map["user.html_url"]
 	}
 }

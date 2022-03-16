@@ -9,6 +9,7 @@ import UIKit
 
 enum HomeRouter {
 	case home
+	case detail(dto: DetailDTO)
 }
 
 extension HomeRouter {
@@ -16,6 +17,8 @@ extension HomeRouter {
 		switch self {
 			case .home:
 				return homeBuilder()
+			case let .detail(address):
+				return detailBuilder(address)
 		}
 	}
 }
@@ -28,4 +31,10 @@ private func homeBuilder() -> UIViewController {
 	let viewController: HomeViewViewController = .init(reactor: reactor)
 	let navigationController : UINavigationController = .init(rootViewController: viewController)
 	return navigationController
+}
+
+
+private func detailBuilder(_ dto: DetailDTO) -> UIViewController {
+	let viewController: DetailViewController = .init(dto: dto)
+	return viewController
 }
