@@ -10,6 +10,8 @@
 		5FCCF0EB27E17713003F8C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF0EA27E17713003F8C15 /* AppDelegate.swift */; };
 		5FCCF0F427E17714003F8C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCCF0F327E17714003F8C15 /* Assets.xcassets */; };
 		5FCCF0F727E17714003F8C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCCF0F527E17714003F8C15 /* LaunchScreen.storyboard */; };
+		5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */; };
+		5FCCF10827E17BBC003F8C15 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */; };
 		CCFF469C7A08E13212403752 /* Pods_GitIssuesExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41193EA75B2E2B055DF24CDD /* Pods_GitIssuesExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +23,8 @@
 		5FCCF0F327E17714003F8C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FCCF0F627E17714003F8C15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FCCF0F827E17714003F8C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
+		5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		AD7F02D2E5EC4B63F0107547 /* Pods-GitIssuesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitIssuesExample.release.xcconfig"; path = "Target Support Files/Pods-GitIssuesExample/Pods-GitIssuesExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,8 @@
 		5FCCF10027E179DC003F8C15 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */,
+				5FCCF10727E17BBC003F8C15 /* NetworkLogger.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FCCF10827E17BBC003F8C15 /* NetworkLogger.swift in Sources */,
 				5FCCF0EB27E17713003F8C15 /* AppDelegate.swift in Sources */,
+				5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitIssuesExample/Info.plist;
+				INFOPLIST_FILE = GitIssuesExample/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -420,7 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitIssuesExample/Info.plist;
+				INFOPLIST_FILE = GitIssuesExample/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
