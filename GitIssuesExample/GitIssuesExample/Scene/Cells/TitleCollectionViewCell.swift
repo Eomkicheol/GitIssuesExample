@@ -3,7 +3,6 @@
 	//  GitIssuesExample
 	//
 	//  Created 엄기철 on 2022/03/16.
-	//  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 	//
 
 import UIKit
@@ -13,7 +12,20 @@ import SnapKit
 import RxCocoa
 import RxSwift
 import ReactorKit
+import RxOptional
 
+extension Reactive where Base: TitleCollectionViewCell {
+	
+	var didTap: ControlEvent<String> {
+		let source = UITapGestureRecognizer().then {
+			self.base.addGestureRecognizer($0)
+			self.base.isUserInteractionEnabled = true
+		}.rx.event.map { [weak base] _ in
+			return base?.reactor?.currentState.item.body
+		}.filterNil()
+		return ControlEvent(events: source)
+	}
+}
 
 final class TitleCollectionViewCell: BaseCollectionViewCell, ReactorKit.View {
 	
@@ -70,16 +82,22 @@ final class TitleCollectionViewCell: BaseCollectionViewCell, ReactorKit.View {
 	override func setupConstraints() {
 		super.setupConstraints()
 		
-		issuesLabel.snp.makeConstraints {
-			$0.centerY.equalToSuperview()
-			$0.left.equalToSuperview().offset(20)
-			
+		
+		issuesLabel.do{
+			$0.setContentHuggingPriority(.required, for: .horizontal)
+			$0.setContentCompressionResistancePriority(.required, for: .horizontal)
+			$0.snp.makeConstraints {
+				$0.centerY.equalToSuperview()
+				$0.left.equalToSuperview().offset(20)
+			}
 		}
 		
-		titleLabel.snp.makeConstraints {
-			$0.centerY.equalToSuperview()
-			$0.left.equalTo(issuesLabel.snp.right).offset(8)
-			$0.right.lessThanOrEqualTo(arrowImag.snp.left).offset(-10)
+		titleLabel.do {
+			$0.snp.makeConstraints {
+				$0.centerY.equalToSuperview()
+				$0.left.equalTo(issuesLabel.snp.right).offset(8)
+				$0.right.equalTo(arrowImag.snp.left).offset(-10)
+			}
 		}
 		
 		arrowImag.do {

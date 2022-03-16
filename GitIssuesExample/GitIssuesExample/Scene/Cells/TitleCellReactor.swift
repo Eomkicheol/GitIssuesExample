@@ -3,7 +3,6 @@
 //  GitIssuesExample
 //
 //  Created 엄기철 on 2022/03/16.
-//  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import RxCocoa

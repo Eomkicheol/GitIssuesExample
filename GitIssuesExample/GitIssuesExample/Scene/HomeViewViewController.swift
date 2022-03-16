@@ -102,12 +102,8 @@ extension HomeViewViewController {
 	func bind(reactor: Reactor) {
 		self.setFetchRepoItem(reactor: reactor)
 		self.bindDelegate(reactor: reactor)
-		
-		reactor.state
-			.map { $0.section }
-			.distinctUntilChanged()
-			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
-			.disposed(by: self.disposeBag)
+		self.bindSection(reactor: reactor)
+		self.bindMoveToWeb(reactor: reactor)
 	}
 }
 
@@ -128,6 +124,28 @@ extension HomeViewViewController {
 	
 	private func bindDelegate(reactor: Reactor) {
 		self.collectionView.rx.setDelegate(self)
+			.disposed(by: self.disposeBag)
+	}
+	
+	private func bindSection(reactor: Reactor) {
+		reactor.state
+			.map { $0.section }
+			.distinctUntilChanged()
+			.bind(to: self.collectionView.rx.items(dataSource: self.dataSource))
+			.disposed(by: self.disposeBag)
+		
+	}
+	
+	private func bindMoveToWeb(reactor: Reactor) {
+		reactor.state
+			.compactMap(\.moveToWeb)
+			.asDriver(onErrorJustReturn: "")
+			.drive(onNext: {
+				guard let url = URL(string: $0) else { return }
+				if UIApplication.shared.canOpenURL(url) {
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				}
+			})
 			.disposed(by: self.disposeBag)
 	}
 }
@@ -153,12 +171,31 @@ extension HomeViewViewController {
 					switch sectionItem {
 						case let .titleItem(cellReactor):
 							let cell = collectionView.dequeue(Reusable.titleCell, for: indexPath)
-							cell.configure(reactor: cellReactor)
+							if cell.reactor !== cellReactor {
+								cell.configure(reactor: cellReactor)
+								cell.rx.didTap
+									.throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+									.asDriver(onErrorJustReturn: "")
+									.drive(onNext: { [weak self] body in
+										print(body)
+									})
+									.disposed(by: cell.disposeBag)
+							}
 							return cell
-							
+
 						case let .imageItem(cellReactor):
 							let cell = collectionView.dequeue(Reusable.imageCell, for: indexPath)
-							cell.configure(reactor: cellReactor)
+							if cell.reactor !== cellReactor {
+								cell.configure(reactor: cellReactor)
+								cell.rx.didTap
+									.throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+									.asDriver(onErrorJustReturn: "")
+									.drive(onNext: { [weak self] address in
+										guard let self = self else { return }
+										self.reactor?.action.onNext(Reactor.Action.moveToWeb(address))
+									})
+									.disposed(by: cell.disposeBag)
+							}
 							return cell
 					}
 				}

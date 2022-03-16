@@ -3,7 +3,6 @@
 //  GitIssuesExample
 //
 //  Created 엄기철 on 2022/03/16.
-//  Copyright © 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
@@ -14,6 +13,19 @@ import RxCocoa
 import RxSwift
 import ReactorKit
 import Kingfisher
+
+extension Reactive where Base: ImageCollectionViewCell {
+	
+	var didTap: ControlEvent<String> {
+		let source = UITapGestureRecognizer().then {
+			self.base.addGestureRecognizer($0)
+			self.base.isUserInteractionEnabled = true
+		}.rx.event.map { [weak base] _ in
+			return base?.reactor?.currentState.webAddress
+		}.filterNil()
+		return ControlEvent(events: source)
+	}
+}
 
 
 final class ImageCollectionViewCell: BaseCollectionViewCell, ReactorKit.View {
