@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '15.0'
+
+target 'GitIssuesExample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for GitIssuesExample
+
+  # Architecture
+	pod 'ReactorKit'
+	
+	# Reactive
+	pod 'RxSwift'
+	pod 'RxCocoa'
+	pod 'RxDataSources', '~> 4.0'
+	pod 'RxViewController'
+	pod 'Moya/RxSwift', '~> 14.0'
+	pod 'RxOptional'
+	pod 'RxSwiftExt', '~> 5'
+	pod 'ReusableKit'
+
+  # UI
+  pod 'SnapKit', '5.0.1'
+  pod 'Kingfisher', '~> 7.0'
+
+  # Misc.
+  pod 'ObjectMapper'
+	pod 'Then'
+  pod 'CocoaLumberjack/Swift'
+
+end
