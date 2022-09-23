@@ -13,20 +13,14 @@ target 'GitIssuesExample' do
 	# Reactive
 	pod 'RxSwift'
 	pod 'RxCocoa'
-	pod 'RxDataSources', '~> 4.0'
+	pod 'RxDataSources'
 	pod 'RxViewController'
-	pod 'Moya/RxSwift', '~> 14.0'
 	pod 'RxOptional'
-	pod 'RxSwiftExt', '~> 5'
+	pod 'RxSwiftExt'
 	pod 'ReusableKit'
 
   # UI
-  pod 'SnapKit', '5.0.1'
-  pod 'Kingfisher', '~> 7.0'
-
-  # Misc.
-  pod 'ObjectMapper'
+  pod 'SnapKit'
 	pod 'Then'
-  pod 'CocoaLumberjack/Swift'
 
 end

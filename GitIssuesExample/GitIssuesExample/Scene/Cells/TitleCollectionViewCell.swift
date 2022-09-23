@@ -33,7 +33,7 @@ extension Reactive where Base: TitleCollectionViewCell {
 			self.base.isUserInteractionEnabled = true
 		}.rx.event.map { [weak base] _ -> DetailDTO in
 			var dto = DetailDTO()
-			dto.html = base?.reactor?.currentState.item.body ?? ""
+			dto.html = base?.reactor?.currentState.item.user.html_url ?? ""
 			dto.title = base?.reactor?.currentState.item.title ?? ""
 			return dto
 		}
@@ -129,7 +129,7 @@ final class TitleCollectionViewCell: BaseCollectionViewCell, ReactorKit.View {
 	func bind(reactor: Reactor) {
 		reactor.state
 			.map { $0.item }
-			.asDriver(onErrorJustReturn: .init())
+			.asDriver(onErrorJustReturn: .init(number: 0, title: "", user: .init(html_url: "")))
 			.drive(onNext: { [weak self] item in
 				self?.issuesLabel.text = "\(item.number) - "
 				self?.titleLabel.text = item.title

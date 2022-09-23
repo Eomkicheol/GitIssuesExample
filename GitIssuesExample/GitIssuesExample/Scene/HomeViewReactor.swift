@@ -63,7 +63,7 @@ final class HomeViewReactor: Reactor {
 				return self.effector
 					.fetchRepoData()
 					.flatMap { return Observable.just(Mutation.setRepoData($0))}
-					.catchError { _ in .empty() }
+					.catch { _ in .empty() }
 			case let .moveToWeb(address):
 				return Observable.concat([
 					Observable.just(Mutation.setMoveToWeb(address)),
@@ -80,7 +80,7 @@ final class HomeViewReactor: Reactor {
 				return self.effector
 					.searchRepoData(searchName: search)
 					.flatMap { return Observable.just(Mutation.setRepoData($0))}
-					.catchError { _  -> Observable<Mutation> in
+					.catch { _  -> Observable<Mutation> in
 						return Observable.concat([
 							Observable.just(Mutation.setErrorMessage("검색하신 레포가 없습니다.")),
 							Observable.just(Mutation.setErrorMessage(nil))

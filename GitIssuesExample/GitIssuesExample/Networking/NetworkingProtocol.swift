@@ -5,64 +5,67 @@
 	//  Created by 엄기철 on 2022/03/16.
 	//
 
-import SystemConfiguration
-
 import Then
 import RxSwift
 import RxCocoa
-import Moya
-import ObjectMapper
 
-var defaultErrorMessage: String = "잠시 후 다시 접속해주세요."
-
-public protocol NetworkingProtocol {
-	func request(_ target: TargetType, file: StaticString, function: StaticString, line: UInt) -> Single<Moya.Response>
+enum ApiError: Error {
+	case noResponse
+	case invalidData
+	case unexpected
 }
 
-extension NetworkingProtocol {
-	func request(_ target: TargetType, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> Single<Moya.Response> {
-		return self.request(target, file: file, function: function, line: line)
+extension ApiError: CustomStringConvertible {
+	var description: String {
+		switch self {
+			case .noResponse:
+				return "서버에 응답이 없습니다 잠시후 다시 이용해 주세요."
+			case .invalidData:
+				return "잘못된 데이터가 입력되었습니다."
+			case .unexpected:
+				return "현재 일시적인 문제가 생겨 빠르게 개선중입니다.\n이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해주세요."
+		}
 	}
 }
 
-public final class Networking: MoyaProvider<MultiTarget>, NetworkingProtocol {
-	
-	var disposeBag: DisposeBag = DisposeBag()
-	
-	public func request(_ target: TargetType, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> Single<Moya.Response> {
-		let requestString = "\(target.method.rawValue) \(target.path)"
-		
-		return self.rx.request(.target(target))
-			.filterSuccessfulStatusCodes()
-			.do(onSuccess: { value in
-				let message = "SUCCESS: \(requestString) (\(value.statusCode))"
-				log.debug(message, file: file, function: function, line: line)
-			}, onError: { error in
-				if let response = (error as? MoyaError)?.response {
-					if let jsonObject = try? response.mapJSON(failsOnEmptyData: false) {
-						let message = "FAILURE: \(requestString) (\(response.statusCode))\n\(jsonObject)"
-						log.warning(message, file: file, function: function, line: line)
-					} else if let rawString = String(data: response.data, encoding: .utf8) {
-						let message = "FAILURE: \(requestString) (\(response.statusCode))\n\(rawString)"
-						log.warning(message, file: file, function: function, line: line)
-					} else {
-						let message = "FAILURE: \(requestString) (\(response.statusCode))"
-						log.warning(message, file: file, function: function, line: line)
-					}
-				} else {
-					let message = "FAILURE: \(requestString)\n\(error)"
-					log.debug(message, file: file, function: function, line: line)
+protocol NetworkingProtocol {
+	func request<T: Codable>(_ targetType: ApiTargetType) -> Single<T>
+}
+
+struct Networking: NetworkingProtocol {
+	func request<T>(_ targetType: ApiTargetType) -> Single<T> where T: Codable, T: Decodable {
+		guard let request = targetType.createCompmnents() else { return Single.error(ApiError.noResponse) }
+
+		return Single.create { single -> Disposable in
+
+			let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+				guard let status = response as? HTTPURLResponse else {
+					single(.failure(ApiError.unexpected))
+					return
 				}
-				
-			}, onSubscribed: {
-				let message = "REQUEST: \(requestString)"
-				log.debug(message)
-			}).catchError {
-				guard let error = $0 as? MoyaError else { fatalError("") }
-				return .error(NSError(domain: error.localizedDescription, code: 0, userInfo: [:]))
+
+				guard 200..<300 ~= status.statusCode else { single(.failure(ApiError.unexpected))
+					return
+				}
+
+				guard let data = data else { single(.failure(ApiError.unexpected))
+					return
+				}
+
+				guard let decodedData = try? JSONDecoder().decode(T.self, from: data) else {
+					single(.failure(ApiError.invalidData))
+					return
+				}
+				single(.success(decodedData))
 			}
+
+			task.resume()
+
+			return Disposables.create {
+				task.cancel()
+			}
+		}
 	}
 }
 
-
-public let defaultNetwork = Networking()

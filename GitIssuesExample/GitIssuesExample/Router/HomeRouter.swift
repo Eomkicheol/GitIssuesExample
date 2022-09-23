@@ -25,7 +25,7 @@ extension HomeRouter {
 
 
 private func homeBuilder() -> UIViewController {
-	let respose: HomeRepositories = .init()
+	let respose: HomeRepositories = .init(network: Networking())
 	let effector: HomeViewEffector = .init(repository: respose)
 	let reactor: HomeViewReactor = .init(effector: effector)
 	let viewController: HomeViewViewController = .init(reactor: reactor)

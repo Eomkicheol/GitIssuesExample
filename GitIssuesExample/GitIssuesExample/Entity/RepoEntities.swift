@@ -5,29 +5,22 @@
 	//  Created 엄기철 on 2022/03/16.
 	//
 
-import ObjectMapper
+import Foundation
+import UIKit
 
-struct RepoEntities: Mappable  {
+struct RepoEntities: Codable, Equatable {
 	var number: Int
 	var title: String
-	var body: String
-	
-	
-	init() {
-		number = 0
-		title = ""
-		body = ""
+	var user: UserEntities
+
+	enum CodingKeys: String, CodingKey {
+		case number
+		case title
+		case user
 	}
-	
-	init?(map: Map) {
-		number = 0
-		title = ""
-		body = ""
-	}
-	
-	mutating func mapping(map: Map) {
-		number <- map["number"]
-		title <- map["title"]
-		body <- map["user.html_url"]
-	}
+}
+
+
+struct UserEntities: Codable, Equatable {
+	var html_url: String
 }

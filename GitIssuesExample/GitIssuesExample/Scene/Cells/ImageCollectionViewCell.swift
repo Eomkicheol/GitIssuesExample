@@ -12,7 +12,6 @@ import SnapKit
 import RxCocoa
 import RxSwift
 import ReactorKit
-import Kingfisher
 
 extension Reactive where Base: ImageCollectionViewCell {
 	
@@ -76,8 +75,7 @@ final class ImageCollectionViewCell: BaseCollectionViewCell, ReactorKit.View {
 			.map { $0.imageName }
 			.asDriver(onErrorJustReturn: "")
 			.drive(onNext: { [weak self] name in
-				guard let url = URL(string: name) else { return }
-				self?.botImage.kf.setImage(with: url)
+				self?.botImage.setImage(url: name)
 			})
 			.disposed(by: self.disposeBag)
 	}
