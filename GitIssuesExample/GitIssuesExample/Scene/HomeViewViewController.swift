@@ -42,6 +42,8 @@ final class HomeViewViewController: BaseViewController, ReactorKit.View {
 	
 	
 	lazy var dataSource = self.createDataSource()
+
+	weak var homeChildCoordinator: HomeChildCoordinator?
 	
 		// MARK: UI Properties
 	lazy var collectionView = UICollectionView(
@@ -156,9 +158,7 @@ extension HomeViewViewController {
 			.compactMap(\.moveToDetail)
 			.asDriver(onErrorJustReturn: .init())
 			.drive(onNext: { [weak self] dto in
-				HomeRouter.detail(dto: dto).viewController.do {
-					self?.navigationController?.pushViewController($0, animated: true)
-				}
+				self?.homeChildCoordinator?.moveToDetailViewController(dto: dto)
 			})
 			.disposed(by: self.disposeBag)
 	}

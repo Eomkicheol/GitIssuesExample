@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		5F1C2BBB28DDC81A0094F8E0 /* ApiTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1C2BBA28DDC81A0094F8E0 /* ApiTargetType.swift */; };
+		5F65C82829021C3C007D484A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C82729021C3C007D484A /* Coordinator.swift */; };
+		5F65C82A29021D47007D484A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C82929021D47007D484A /* MainCoordinator.swift */; };
+		5F65C82C29021E59007D484A /* MainChildCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C82B29021E59007D484A /* MainChildCoordinatorFactory.swift */; };
+		5F65C82E29021EFA007D484A /* HomeChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C82D29021EFA007D484A /* HomeChildCoordinator.swift */; };
+		5F65C83029022246007D484A /* DetailChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F65C82F29022246007D484A /* DetailChildCoordinator.swift */; };
 		5FCCF0EB27E17713003F8C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF0EA27E17713003F8C15 /* AppDelegate.swift */; };
 		5FCCF0F427E17714003F8C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FCCF0F327E17714003F8C15 /* Assets.xcassets */; };
 		5FCCF0F727E17714003F8C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FCCF0F527E17714003F8C15 /* LaunchScreen.storyboard */; };
 		5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */; };
 		5FCD685E28DDEF650091F5C3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD685D28DDEF650091F5C3 /* ImageLoader.swift */; };
 		5FCD686028DDF2B00091F5C3 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD685F28DDF2B00091F5C3 /* UIImageView + Extension.swift */; };
-		5FD4559027E1817700E19829 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4558F27E1817700E19829 /* HomeRouter.swift */; };
 		5FD4559527E182A100E19829 /* HomeViewEffector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559127E182A100E19829 /* HomeViewEffector.swift */; };
 		5FD4559727E182A100E19829 /* HomeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559327E182A100E19829 /* HomeViewViewController.swift */; };
 		5FD4559827E182A100E19829 /* HomeViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD4559427E182A100E19829 /* HomeViewReactor.swift */; };
@@ -37,6 +41,11 @@
 		0AC1F29E0C692CBCBFB5477C /* Pods_GitIssuesExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitIssuesExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A95CD4617FA9C5DB1234131 /* Pods-GitIssuesExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitIssuesExample.debug.xcconfig"; path = "Target Support Files/Pods-GitIssuesExample/Pods-GitIssuesExample.debug.xcconfig"; sourceTree = "<group>"; };
 		5F1C2BBA28DDC81A0094F8E0 /* ApiTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTargetType.swift; sourceTree = "<group>"; };
+		5F65C82729021C3C007D484A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		5F65C82929021D47007D484A /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		5F65C82B29021E59007D484A /* MainChildCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChildCoordinatorFactory.swift; sourceTree = "<group>"; };
+		5F65C82D29021EFA007D484A /* HomeChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChildCoordinator.swift; sourceTree = "<group>"; };
+		5F65C82F29022246007D484A /* DetailChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChildCoordinator.swift; sourceTree = "<group>"; };
 		5FCCF0E727E17713003F8C15 /* GitIssuesExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitIssuesExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCCF0EA27E17713003F8C15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FCCF0F327E17714003F8C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,7 +54,6 @@
 		5FCCF10527E17B4B003F8C15 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProtocol.swift; sourceTree = "<group>"; };
 		5FCD685D28DDEF650091F5C3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5FCD685F28DDF2B00091F5C3 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
-		5FD4558F27E1817700E19829 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		5FD4559127E182A100E19829 /* HomeViewEffector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewEffector.swift; sourceTree = "<group>"; };
 		5FD4559327E182A100E19829 /* HomeViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewController.swift; sourceTree = "<group>"; };
 		5FD4559427E182A100E19829 /* HomeViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewReactor.swift; sourceTree = "<group>"; };
@@ -76,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F65C82629021C33007D484A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5F65C82729021C3C007D484A /* Coordinator.swift */,
+				5F65C82929021D47007D484A /* MainCoordinator.swift */,
+				5F65C82B29021E59007D484A /* MainChildCoordinatorFactory.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		5FCCF0DE27E17713003F8C15 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +115,9 @@
 		5FCCF0E927E17713003F8C15 /* GitIssuesExample */ = {
 			isa = PBXGroup;
 			children = (
+				5F65C82629021C33007D484A /* Coordinator */,
 				5FCD685C28DDEF570091F5C3 /* Common */,
 				5FCCF10427E17A43003F8C15 /* Entity */,
-				5FCCF10327E17A38003F8C15 /* Router */,
 				5FCCF10227E17A2F003F8C15 /* Repositories */,
 				5FCCF10127E179E5003F8C15 /* Apis */,
 				5FCCF10027E179DC003F8C15 /* Networking */,
@@ -156,14 +174,6 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		5FCCF10327E17A38003F8C15 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				5FD4558F27E1817700E19829 /* HomeRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		5FCCF10427E17A43003F8C15 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 				5FD4559127E182A100E19829 /* HomeViewEffector.swift */,
 				5FD4559327E182A100E19829 /* HomeViewViewController.swift */,
 				5FD4559427E182A100E19829 /* HomeViewReactor.swift */,
+				5F65C82D29021EFA007D484A /* HomeChildCoordinator.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				5FD455C027E1BCD300E19829 /* DetailViewController.swift */,
+				5F65C82F29022246007D484A /* DetailChildCoordinator.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -355,16 +367,19 @@
 				5FD455B227E1955500E19829 /* ImageCollectionViewCell.swift in Sources */,
 				5FD4559E27E184E300E19829 /* DebugLog.swift in Sources */,
 				5FCD685E28DDEF650091F5C3 /* ImageLoader.swift in Sources */,
+				5F65C82C29021E59007D484A /* MainChildCoordinatorFactory.swift in Sources */,
 				5FD455A127E1852300E19829 /* BaseViewController.swift in Sources */,
 				5FD455AF27E1954C00E19829 /* TitleCellReactor.swift in Sources */,
 				5FD455C427E1BCD300E19829 /* DetailViewController.swift in Sources */,
+				5F65C82829021C3C007D484A /* Coordinator.swift in Sources */,
 				5FD455B727E196D300E19829 /* BaseCollectionViewCell.swift in Sources */,
-				5FD4559027E1817700E19829 /* HomeRouter.swift in Sources */,
+				5F65C82A29021D47007D484A /* MainCoordinator.swift in Sources */,
 				5F1C2BBB28DDC81A0094F8E0 /* ApiTargetType.swift in Sources */,
 				5FCD686028DDF2B00091F5C3 /* UIImageView + Extension.swift in Sources */,
 				5FD4559C27E1845C00E19829 /* HomeApi.swift in Sources */,
 				5FD455B527E1959F00E19829 /* RepoSection.swift in Sources */,
 				5FD455BC27E19AE300E19829 /* RepoEntities.swift in Sources */,
+				5F65C83029022246007D484A /* DetailChildCoordinator.swift in Sources */,
 				5FD4559A27E182FA00E19829 /* HomeRepositories.swift in Sources */,
 				5FD4559727E182A100E19829 /* HomeViewViewController.swift in Sources */,
 				5FCCF0EB27E17713003F8C15 /* AppDelegate.swift in Sources */,
@@ -372,6 +387,7 @@
 				5FD4559527E182A100E19829 /* HomeViewEffector.swift in Sources */,
 				5FD455AE27E1954C00E19829 /* TitleCollectionViewCell.swift in Sources */,
 				5FCCF10627E17B4B003F8C15 /* NetworkingProtocol.swift in Sources */,
+				5F65C82E29021EFA007D484A /* HomeChildCoordinator.swift in Sources */,
 				5FD455B327E1955500E19829 /* ImageCellReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

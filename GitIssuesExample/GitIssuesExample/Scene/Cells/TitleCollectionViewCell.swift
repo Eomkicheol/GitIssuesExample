@@ -15,7 +15,7 @@ import ReactorKit
 import RxOptional
 
 
-struct DetailDTO {
+struct DetailDTO: Decodable {
 	var html: String
 	var title: String
 	
